@@ -1,0 +1,1 @@
+FROM xeax/task1:latest
