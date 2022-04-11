@@ -7,11 +7,16 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import com.example.task.quote.exceptions.QuoteNotFoundException;
+import com.example.task.tools.AuthenticatedUserTool;
+import com.example.task.user.User;
+
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class QuoteServiceImpl implements QuoteService {
+
+    private final AuthenticatedUserTool authenticatedUserTool;
 
     private final QuoteRepository quoteRepository;
 
@@ -28,6 +33,9 @@ public class QuoteServiceImpl implements QuoteService {
     @Transactional
     public QuoteDto create(QuoteDto quoteDto) {
         Quote quote = quoteMapper.map(quoteDto);
+        User user = authenticatedUserTool.getUser();
+        quote.setRating(0L);
+        quote.setCreatedBy(user);
         Quote savedQuote = quoteRepository.saveAndFlush(quote);
         return quoteMapper.map(savedQuote);
     }

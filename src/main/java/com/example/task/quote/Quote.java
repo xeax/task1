@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 
 import com.example.task.user.User;
 
+import org.hibernate.annotations.BatchSize;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -26,6 +27,7 @@ import java.time.LocalDateTime;
 @Setter
 @RequiredArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@BatchSize(size=25)
 public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
