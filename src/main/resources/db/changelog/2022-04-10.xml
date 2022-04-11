@@ -36,7 +36,8 @@
             <column name="quote_id" type="BIGINT">
                 <constraints foreignKeyName="FK_vote_quote_id" deferrable="false"
                              initiallyDeferred="false" referencedColumnNames="id"
-                             referencedTableName="quote" validateForeignKey="true"/>
+                             referencedTableName="quote" validateForeignKey="true"
+                             deleteCascade="true"/>
             </column>
             <column name="user_id" type="BIGINT">
                 <constraints foreignKeyName="FK_vote_user_id" deferrable="false"
