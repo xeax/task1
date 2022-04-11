@@ -66,6 +66,7 @@
         <insert tableName="quote">
             <column name="created_by" value="2"/>
             <column name="created_at" value="now()"/>
+            <column name="rating" value="2"/>
             <column name="content" value="The greatest glory in living lies not in never falling, but in rising every time we fall."/>
         </insert>
         <insert tableName="quote">
